@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 import items from './items.json';
 
 export default function ItemList(){
+  // sortBy constant and itemsList
   const [sortBy, setSortBy] = useState('name');
   const [itemsList, setItemsList] = useState(items);
+  // useEffect keep track of sortBy to display list
   useEffect(()=>{
     if(sortBy === 'name'){
     const sortByName = [...itemsList].sort((a, b) => a.name.localeCompare(b.name));
@@ -15,6 +17,7 @@ export default function ItemList(){
     setItemsList(sortbyCategory);
   } },[sortBy]);
 
+  // sortItem use to change sortBy | Todo: change the button color
   const sortItem = (option)=>{
     setSortBy(option);
   }

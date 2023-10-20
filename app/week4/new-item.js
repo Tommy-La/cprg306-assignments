@@ -9,20 +9,14 @@ export default function NewItem() {
   const [category, setCategory] = useState('produce');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-
-    
+    e.preventDefault();     
     const item = {
       name,
       quantity,
       category,
     };
-
     console.log(item);
-
     alert(`Name: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
-
-   
     setName('');
     setQuantity(1);
     setCategory('produce');
