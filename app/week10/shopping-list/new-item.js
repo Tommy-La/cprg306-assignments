@@ -16,8 +16,9 @@ export default function NewItem({items, onAddItem}) {
       quantity,
       category,
     };
-    
+
     onAddItem(newItem);
+
     myItems = setMyItems([...items, newItem]);
 
     items = myItems;
@@ -35,7 +36,7 @@ export default function NewItem({items, onAddItem}) {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-mono text-slate-900"
+            class="w-full mt-1 border-2 border-gray-300 p-2 rounded-lg font-mono text-slate-900"
           />
         </div>
         <div className="flex justify-between">
@@ -44,7 +45,7 @@ export default function NewItem({items, onAddItem}) {
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value))}
-            className="w-20 ml-1 border-2 border-gray-300 p-2 rounded-lg font-mono text-slate-900"
+            class="w-20 ml-1 border-2 border-gray-300 p-2 rounded-lg font-mono text-slate-900"
           />
         
           <label>Category: </label>
@@ -63,7 +64,7 @@ export default function NewItem({items, onAddItem}) {
             <option value="others">Other</option>
           </select>
         </div>
-        <button onClick={(e) => handleSubmit(e)} className="w-full mt-4 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Submit</button>
+        <button type="submit" class="w-full mt-4 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Submit</button>
       </form>
     </div>
   );

@@ -19,8 +19,6 @@ export default function NewItem({items, onAddItem}) {
 
     onAddItem(newItem);
 
-    myItems = setMyItems([...items, newItem]);
-
     items = myItems;
     setName('');
     setQuantity(1);

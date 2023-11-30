@@ -12,14 +12,17 @@ export default function Page() {
   // New event handler to clean up item name and update selectedItemName state
   const handleItemSelect = (selectedItem) => {
     // Clean up the item name by removing size and emoji
-    const cleanedItemName = selectedItem.name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|�[�-�]|�[�-�]|[\u2011-\u26FF]|�[�-�])/g, '').trim();
+    const cleanedItemName = selectedItem.name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '').trim();
     setSelectedItemName(cleanedItemName);
+
   };
 
   const handleAddItem = (newItem) => {
     setItems([...items, newItem]);
   };
 
+
+  
   return (
     <div className="flex p-4 bg-slate-950">
       {/* NewItem and ItemList components grouped together */}
@@ -32,7 +35,7 @@ export default function Page() {
       {/* MealIdeas component placed on the other side */}
       <div className="w-1/2 pl-4">
         {/* Pass selectedItemName as ingredient prop to MealIdeas */}
-        <MealIdeas ingredient={selectedItemName} />
+        <MealIdeas ingredient={selectedItemName}/>
       </div>
     </div>
   );

@@ -2,32 +2,33 @@
 import React, { useState, useEffect } from 'react';
 
 function MealIdeas({ingredient}){
-    const [meals, setMeals] = useState([]);
+    let [meals, setMeals] = useState([]);
 
+    
     const fetchMealIdeas = async (ingredient) => {
         try {
-          const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}');
+          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
           const data = await response.json();
-          return data.meals || [];
+          console.log(data);
+          setMeals(data.meals || []);
         } catch (error) {
-          console.error('Error fetching meal ideas:', error);
-          return [];
+          console.error('Cannot fetch meal ideas:', error);
+          setMeals([]);
         }
     }
 
+    useEffect(() => {
+      fetchMealIdeas(ingredient);
+    }, [ingredient]);
 
-const FetchMealIdeas = async ()=>{
-    const fetchedMeals = await fetchMealIdeas(ingredient);
-    setMeals(fetchedMeals);
-}
     return(
-        <div>
+        <div className="mb-8 text-center">
       <h2>Meal Ideas with {ingredient}</h2>
       <ul>
         {meals.map((meal) => (
           <li key={meal.idMeal}>
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            {meal.strMeal}
+            <p className="mt-2 text-lg font-bold">{meal.strMeal }</p>
+            <img src={meal.strMealThumb} alt={meal.strMeal} className="w-40 h-auto rounded-md mx-auto"/>
           </li>
         ))}
       </ul>
